@@ -90,6 +90,7 @@ INSERT INTO airports VALUES(DEFAULT, 25, 'PDX',	'PDX',	'KPDX',	'Portland Interna
 -- SELECT population_estimate_2018 FROM cities
 -- WHERE city = 'San Diego';
 
+
 -- SELECT city, state, population_estimate_2018 FROM cities
 -- WHERE city IN ('Phoenix', 'Jacksonville','Charlotte', 'Nashville');
 
@@ -110,6 +111,14 @@ INSERT INTO airports VALUES(DEFAULT, 25, 'PDX',	'PDX',	'KPDX',	'Portland Interna
 -- SELECT city, land_area_sq_mi_2016, population_estimate_2018 FROM cities
 -- WHERE land_area_sq_mi_2016 > 400 OR population_estimate_2018 > 2000000;
 
-SELECT city, land_area_sq_mi_2016, population_estimate_2018 FROM cities
-WHERE land_area_sq_mi_2016 > 400 OR population_estimate_2018 > 2000000
- NOT AND land_area_sq_mi_2016 > 400 AND population_estimate_2018 > 2000000;
+-- SELECT city, land_area_sq_mi_2016, population_estimate_2018 FROM cities
+-- WHERE NOT land_area_sq_mi_2016 > 400 AND population_estimate_2018 > 2000000
+-- OR NOT population_estimate_2018 > 2000000 AND land_area_sq_mi_2016 > 400;
+
+-- SELECT city, population_estimate_2018, population_census_2010 FROM cities
+-- WHERE (population_estimate_2018 - population_census_2010) > 200000;
+
+-- Phase 4
+
+SELECT airports.name, cities.city FROM cities
+INNER JOIN airports ON (cities.id = airports.city_id);
