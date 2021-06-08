@@ -7,7 +7,7 @@ CREATE TABLE cities (
   id SERIAL PRIMARY KEY,
   city VARCHAR(255),
   state VARCHAR(255),
-  population_estimate_2018 INT,
+  population_estimate_2018 DECIMAL(3,2),
   population_census_2010 INT,
   land_area_sq_mi_2016 FLOAT,
   pop_density_per_sq_mi_2016 INT
@@ -98,6 +98,18 @@ INSERT INTO airports VALUES(DEFAULT, 25, 'PDX',	'PDX',	'KPDX',	'Portland Interna
 
 -- SELECT city, population_estimate_2018 FROM cities WHERE population_estimate_2018 >= 1000000;
 
--- SELECT city, (population_estimate_2018 / 1000000.0) as million FROM cities WHERE state = 'Texas';
+-- phase 3, #5
+-- SELECT city, (population_estimate_2018 / 1000000) as million FROM cities WHERE state = 'Texas';
+-- SELECT city, ROUND((population_estimate_2018/1000000.00),6) as million FROM cities WHERE state = 'Texas';
 
 -- SELECT city, state, population_estimate_2018 FROM cities WHERE state NOT IN ('New York', 'California', 'Texas');
+
+-- SELECT city, state, population_estimate_2018 FROM cities
+-- WHERE city LIKE 'S%';
+
+-- SELECT city, land_area_sq_mi_2016, population_estimate_2018 FROM cities
+-- WHERE land_area_sq_mi_2016 > 400 OR population_estimate_2018 > 2000000;
+
+SELECT city, land_area_sq_mi_2016, population_estimate_2018 FROM cities
+WHERE land_area_sq_mi_2016 > 400 OR population_estimate_2018 > 2000000
+ NOT AND land_area_sq_mi_2016 > 400 AND population_estimate_2018 > 2000000;
