@@ -7,7 +7,7 @@ CREATE TABLE cities (
   id SERIAL PRIMARY KEY,
   city VARCHAR(255),
   state VARCHAR(255),
-  population_estimate_2018 DECIMAL(3,2),
+  population_estimate_2018 INT, -- bonus 3: have to change INT to DECIMAL(3,2)
   population_census_2010 INT,
   land_area_sq_mi_2016 FLOAT,
   pop_density_per_sq_mi_2016 INT
@@ -101,7 +101,6 @@ INSERT INTO airports VALUES(DEFAULT, 25, 'PDX',	'PDX',	'KPDX',	'Portland Interna
 
 -- phase 3, #5
 -- SELECT city, (population_estimate_2018 / 1000000) as million FROM cities WHERE state = 'Texas';
--- SELECT city, ROUND((population_estimate_2018/1000000.00),6) as million FROM cities WHERE state = 'Texas';
 
 -- SELECT city, state, population_estimate_2018 FROM cities WHERE state NOT IN ('New York', 'California', 'Texas');
 
@@ -120,5 +119,27 @@ INSERT INTO airports VALUES(DEFAULT, 25, 'PDX',	'PDX',	'KPDX',	'Portland Interna
 
 -- Phase 4
 
-SELECT airports.name, cities.city FROM cities
-INNER JOIN airports ON (cities.id = airports.city_id);
+-- SELECT airports.name, cities.city FROM cities
+-- INNER JOIN airports ON (cities.id = airports.city_id);
+
+
+-- SELECT COUNT(*) FROM cities
+-- INNER JOIN airports ON (cities.id = airports.city_id)
+-- WHERE airports.name LIKE 'San Antonio%';
+
+
+-- SELECT FAA_id, IATA_id, ICAO_id FROM airports
+-- WHERE name = 'Chicago O''Hare International';
+
+-- bonuses
+-- SELECT FAA_id, IATA_id, ICAO_id FROM airports
+-- WHERE name = 'Chicago O''Hare International Airport';
+
+-- SELECT city, state, to_char(population_estimate_2018,'9,999,999,999') FROM cities;
+
+-- SELECT city, ROUND((population_estimate_2018/1000000.00),6) as million FROM cities WHERE state = 'Texas';
+
+SELECT city, population_estimate_2018, population_census_2010, (population_estimate_2018 - population_census_2010) as differents  FROM cities
+WHERE (population_estimate_2018 - population_census_2010) > 200000
+ORDER BY (population_estimate_2018 - population_census_2010) DESC
+LIMIT 1;
