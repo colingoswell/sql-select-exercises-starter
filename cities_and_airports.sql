@@ -93,5 +93,11 @@ INSERT INTO airports VALUES(DEFAULT, 25, 'PDX',	'PDX',	'KPDX',	'Portland Interna
 -- SELECT city, state, population_estimate_2018 FROM cities
 -- WHERE city IN ('Phoenix', 'Jacksonville','Charlotte', 'Nashville');
 
-SELECT city, state, population_estimate_2018 FROM cities
-WHERE population_estimate_2018 BETWEEN 800000 AND 900000;
+-- SELECT city, state, population_estimate_2018 FROM cities
+-- WHERE population_estimate_2018 BETWEEN 800000 AND 900000;
+
+-- SELECT city, population_estimate_2018 FROM cities WHERE population_estimate_2018 >= 1000000;
+
+-- SELECT city, (population_estimate_2018 / 1000000.0) as million FROM cities WHERE state = 'Texas';
+
+-- SELECT city, state, population_estimate_2018 FROM cities WHERE state NOT IN ('New York', 'California', 'Texas');
