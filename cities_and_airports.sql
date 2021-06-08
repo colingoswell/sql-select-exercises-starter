@@ -1,4 +1,7 @@
 -- hello
+DROP TABLE IF EXISTS airports;
+DROP TABLE IF EXISTS cities;
+
 
 CREATE TABLE cities (
   id SERIAL PRIMARY KEY,
@@ -76,3 +79,19 @@ INSERT INTO airports VALUES(DEFAULT, 22, 'ELP',	'ELP',	'KELP',	'El Paso Internat
 INSERT INTO airports VALUES(DEFAULT, 23, 'DTW',	'DTW',	'KDTW',	'Detroit Metropolitan Wayne County Airport');
 INSERT INTO airports VALUES(DEFAULT, 24, 'BNA',	'BNA',	'KBNA',	'Nashville International Airport');
 INSERT INTO airports VALUES(DEFAULT, 25, 'PDX',	'PDX',	'KPDX',	'Portland International Airport');
+
+
+--  phase 2 basic select statements
+-- SELECT city, state, population_estimate_2018 FROM cities;
+-- SELECT name FROM airports;
+
+--  phase 3: add where clauses
+-- Write a SQL query that uses a WHERE clause to get the estimated population in 2018 of the city of San Diego.
+-- SELECT population_estimate_2018 FROM cities
+-- WHERE city = 'San Diego';
+
+-- SELECT city, state, population_estimate_2018 FROM cities
+-- WHERE city IN ('Phoenix', 'Jacksonville','Charlotte', 'Nashville');
+
+SELECT city, state, population_estimate_2018 FROM cities
+WHERE population_estimate_2018 BETWEEN 800000 AND 900000;
